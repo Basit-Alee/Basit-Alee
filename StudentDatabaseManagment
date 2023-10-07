@@ -1,0 +1,55 @@
+--First Step
+-- Create a new database named 'StudentDB'
+CREATE DATABASE StudentDB;
+GO
+
+-- Use the 'StudentDB' database
+USE StudentDB;
+GO
+
+-- Create a table to store student information
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DateOfBirth DATE,
+    Gender VARCHAR(10),
+    Email VARCHAR(100),
+    PhoneNumber VARCHAR(20)
+);
+GO
+
+-- Create a table to store course information
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(100),
+    Credits INT
+);
+GO
+
+-- Create a table to store student-course enrollments
+CREATE TABLE Enrollments (
+    EnrollmentID INT PRIMARY KEY,
+    StudentID INT,
+    CourseID INT,
+    EnrollmentDate DATE,
+    FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
+);
+GO
+--Second Step
+-- Insert data into the Students table
+INSERT INTO Students (StudentID, FirstName, LastName, DateOfBirth, Gender, Email, PhoneNumber)
+VALUES
+(1, 'John', 'Doe', '2000-01-15', 'Male', 'john.doe@example.com', '123-456-7890'),
+(2, 'Jane', 'Smith', '2001-05-20', 'Female', 'jane.smith@example.com', '987-654-3210'),
+(3, 'Basit', 'Ali', '2003-10-03','Male','basitalee761@gmail.com','923-322-2860'),
+(4, 'Musab','Ali','2004-08-08','Male','musabali32@gmail.com','033-222-3333'),
+(5, 'Suhaib','Channa','2003-01-01','Male','channasuhaib@gmail.com','034-444-7777');
+-- Insert data into the Courses table
+INSERT INTO Courses (CourseID, CourseName, Credits)
+VALUES
+(101, 'Mathematics', 3),
+(102, 'English', 3),
+(103, 'Science', 4);
+
